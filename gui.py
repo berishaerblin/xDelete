@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
-from check import predict, train
+from check import Predict as predict, Train as train
 
 window = tk.Tk()
 window.geometry("500x200")
@@ -14,7 +14,7 @@ def train_directory():
 
 
 def train_model():
-    train(train_path.get())
+    train(train_path.get()).run()
 
 
 def browse_func():
@@ -23,13 +23,13 @@ def browse_func():
 
 
 def predict_picture():
-    predict(predict_path.get())
+    predict(predict_path.get()).run()
 
 
 def show_window():
     train_browse_button = tk.Button(window, text="Browse train pictures", command=train_directory)
     run_training = tk.Button(window, text="Run Training", command=train_model)
-    browse_button = tk.Button(window, text="Browse", command=browse_func)
+    browse_button = tk.Button(window, text="Browse pictures to find & delete", command=browse_func)
     run_button = tk.Button(window, text="Run", command=predict_picture)
     train_browse_button.pack()
     run_training.pack()
